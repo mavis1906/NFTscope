@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NFTscope</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="container">
+
+           <h1>NFTscope</h1>
+
+           <div class="search-box">
+               <input type="text" id="walletAddress" placeholder="Enter wallet address">
+               <button onclick="searchNFTs()">search </button>
+           </div>
+
+            <div id="results"></div>
+            </div>
+
+            <script src="{{ url_for('static', filename='app.js') }}"></script>
+    </body>
+</html>
