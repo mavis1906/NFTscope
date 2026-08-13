@@ -1,24 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>NFTscope</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    </head>
-    <body>
-        <div class="container">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFTScope</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 
-           <h1>NFTscope</h1>
+<body>
+    <div class="container">
 
-           <div class="search-box">
-               <input type="text" id="walletAddress" placeholder="Enter wallet address">
-               <button onclick="searchNFTs()">search </button>
-           </div>
+        <div id="nftScreen" class="screen active-screen">
+            <h1>NFTScope</h1>
 
-            <div id="results"></div>
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="walletAddress"
+                    placeholder="Enter wallet address or ENS name"
+                >
+                <button onclick="searchNFTs()">Search</button>
             </div>
 
-            <script src="{{ url_for('static', filename='app.js') }}"></script>
-    </body>
+            <div id="results"></div>
+        </div>
+
+
+        <div id="marketScreen" class="screen">
+
+            <div class="market-header">
+                <div>
+                    <h1>Markets</h1>
+                    <p>Live cryptocurrency market data</p>
+                </div>
+            </div>
+
+
+            <div class="market-grid">
+
+                <div class="market-card">
+                    <div class="market-coin">
+                        <div class="coin-icon">₿</div>
+                        <div>
+                            <h3>Bitcoin</h3>
+                            <span>BTC</span>
+                        </div>
+                    </div>
+                    <div class="market-price">
+                        <strong id="btc-price">Loading...</strong>
+                        <span id="btc-change">--</span>
+                    </div>
+                </div>
+
+
+                <div class="market-card">
+                    <div class="market-coin">
+                        <div class="coin-icon">Ξ</div>
+                        <div>
+                            <h3>Ethereum</h3>
+                            <span>ETH</span>
+                        </div>
+                    </div>
+                    <div class="market-price">
+                        <strong id="eth-price">Loading...</strong>
+                        <span id="eth-change">--</span>
+                    </div>
+                </div>
+
+
+                <div class="market-card">
+                    <div class="market-coin">
+                        <div class="coin-icon">◎</div>
+                        <div>
+                            <h3>Solana</h3>
+                            <span>SOL</span>
+                        </div>
+                    </div>
+                    <div class="market-price">
+                        <strong id="sol-price">Loading...</strong>
+                        <span id="sol-change">--</span>
+                    </div>
+                </div>
+
+
+                <div class="market-card">
+                    <div class="market-coin">
+                        <div class="coin-icon">B</div>
+                        <div>
+                            <h3>BNB</h3>
+                            <span>BNB</span>
+                        </div>
+                    </div>
+                    <div class="market-price">
+                        <strong id="bnb-price">Loading...</strong>
+                        <span id="bnb-change">--</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="market-chart">
+
+                <div class="chart-header">
+                    <div>
+                        <h2 id="chartTitle">Bitcoin</h2>
+                        <span id="chartSymbol">BTC</span>
+                    </div>
+
+                    <div class="chart-options">
+                        <button class="chart-option active" id="btcChartButton">BTC</button>
+                        <button class="chart-option" id="ethChartButton">ETH</button>
+                        <button class="chart-option" id="solChartButton">SOL</button>
+                        <button class="chart-option" id="bnbChartButton">BNB</button>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="marketChart"></canvas>
+                </div>
+
+            </div>
+
+
+            <div class="market-table-section">
+
+                <h2>Market Overview</h2>
+
+                <table class="market-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Asset</th>
+                            <th>Price</th>
+                            <th>24h Change</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Bitcoin <span>BTC</span></td>
+                            <td id="table-btc-price">Loading...</td>
+                            <td id="table-btc-change">--</td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>Ethereum <span>ETH</span></td>
+                            <td id="table-eth-price">Loading...</td>
+                            <td id="table-eth-change">--</td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td>Solana <span>SOL</span></td>
+                            <td id="table-sol-price">Loading...</td>
+                            <td id="table-sol-change">--</td>
+                        </tr>
+
+                        <tr>
+                            <td>4</td>
+                            <td>BNB <span>BNB</span></td>
+                            <td id="table-bnb-price">Loading...</td>
+                            <td id="table-bnb-change">--</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
 </html>
